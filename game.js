@@ -3,7 +3,10 @@
     var start = document.getElementById('start');
     var end = document.getElementById('end');
     var status = document.getElementById('status');
+    var boundaries = document.getElementsByClassName('boundary');
+    var mainScore = document.getElementsByClassName('example')[0];
     var stt = status.innerHTML
+    var score = 0
 
     // document.addEventListener('mousemove',function(e) {  
     //     var pos1 = start.getBoundingClientRect();
@@ -15,7 +18,6 @@
     // })
     
 
-    var boundaries = document.getElementsByClassName('boundary');
     start.addEventListener('mouseover',startGame)
     end.addEventListener('mouseover',endGame)
     start.addEventListener('click',resetGame)
@@ -26,8 +28,8 @@
 
     function startGame () {
         console.log("start")
-        
     }
+    
     function endGame () {
         console.log("end")
         if (status.innerHTML == "You Lost"){
@@ -35,18 +37,21 @@
         }
         else{
             status.innerHTML = "You Win"
+            mainScore.innerHTML = 5
         }
     }
+
     function resetGame () {
         console.log("reset")
         for ( var i=0 ; i <boundaries.length ; i++ ) {
             boundaries[i].style.backgroundColor = null
         }
         status.innerHTML = stt
+        mainScore.innerHTML = ""
     }
+
     function loseGame () {
         console.log("lose")
-        
         if (status.innerHTML == "You Win"){
             status.innerHTML = "You Win"
         }
@@ -55,8 +60,8 @@
                 boundaries[i].style.backgroundColor ='red'
             }
             status.innerHTML = "You Lost"
+            mainScore.innerHTML = -10
         }
-        
     }
     
     
